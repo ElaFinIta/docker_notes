@@ -1,4 +1,4 @@
-# docker_notes
+# Example project with node:
 
 - See running containers:
 ```sh
