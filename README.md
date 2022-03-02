@@ -157,3 +157,16 @@ npm start
 and see the html sent in on port **5003**
 
 ![Screenshot 2022-03-02 at 21 30 29](https://user-images.githubusercontent.com/88823568/156435259-f1261907-268c-4854-b0b0-166d47b49ba9.png)
+
+- To push image on docker hub: go into the folder where your project is and do:
+```sh
+docker login
+```
+- Then push image:
+```sh
+docker push <image>
+```
+
+<image> is <username>/nodejs-project:2.0.0 where 2.0.0 is a descriptive tag
+
+- See your image on docker hub
