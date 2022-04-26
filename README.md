@@ -1,5 +1,78 @@
 # Example project with node:
 
+
+- pull an image for node, latest version:
+```sh
+docker pull node
+```
+
+- run a container from node image:
+```sh
+docker run node
+```
+
+This will exit because node itself doesnt do anything. Add `-
+it` to enter the shell mode:
+
+```sh
+docker run -it node
+```
+You are running node from the container, with the node version you pulled.
+
+To put a server.js into a container:
+- make a `Dockerfile` in the project root, with no extension
+
+```dockerfile
+FROM node:17-alpine3.14
+
+WORKDIR /app
+
+COPY . .
+
+CMD ["node", "server.js"]
+```
+Build:
+```sh
+docker build . --tag node-server
+```
+
+To see your images:
+```sh
+docker images
+```
+
+You will see the newly made image node-server
+
+Run a container from image:
+```sh
+docker run --name node-server-app -p 5000:8080 -d node-server
+```
+
+--name my-app --> the name of the app/container
+
+-p is for port --> external port is 5000 and internal is 8080 (?)
+
+-d is for detached
+
+node-server is the name of the image
+
+
+curl localhost:8080 --> will give the message of backend, jeee!
+
+If you make changes to the server, and want to rebuild:
+
+```sh
+docker build --tag node-server
+```
+
+Enter a container:
+```sh
+docker exec -it node-server-app bash
+```
+
+
+
+
 - See running containers:
 ```sh
 docker ps
